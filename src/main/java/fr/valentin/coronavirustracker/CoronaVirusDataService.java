@@ -3,7 +3,10 @@
  */
 package fr.valentin.coronavirustracker;
 
+
+
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -11,6 +14,8 @@ import java.net.http.HttpResponse;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
 
 /**
@@ -48,6 +53,17 @@ public class CoronaVirusDataService {
 		System.out.println(httpResponse.body());
 		
 		// Ici on vas donc faire une request et essayer d'avoir la réponse de notre DATA
+		
+		StringReader csvBodyReader = new StringReader(httpResponse.body());
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+		for (CSVRecord record : records) {
+		    String state = record.get("Province/State");
+		    System.out.println(state);
+		    
+		}
+		       
+		
+		
 		
 	}
 	
