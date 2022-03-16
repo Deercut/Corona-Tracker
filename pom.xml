@@ -14,7 +14,7 @@
 	<name>coronavirus-tracker</name>
 	<description>Application qui a pour but de tracker les chiffres du covid en 2022</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
